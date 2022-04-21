@@ -1,10 +1,9 @@
 FROM alpine:latest
 
-RUN apk update; \
-    apk add --no-cache python3 py3-pip smartmontools; \
-    python3 -m pip install prometheus_client;
+RUN apk add --no-cache smartmontools
 
-ADD smartctl_exporter smartctl_exporter
+ADD bin/smartctl_exporter /bin/smartctl_exporter
 
 EXPOSE 9111
-ENTRYPOINT "smartctl_exporter/smartctl_exporter.py"
+
+ENTRYPOINT "/bin/smartctl_exporter"
