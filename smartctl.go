@@ -70,7 +70,7 @@ func GetAll(dev *Device) *Result {
 			rawFloat, err := strconv.ParseFloat(rawStr, 64)
 			if err != nil {
 				rawStr = strings.TrimSpace(rawStr[:strings.IndexByte(rawStr, '(')])
-				if _, err = strconv.ParseFloat(rawStr, 64); err != nil {
+				if rawFloat, err = strconv.ParseFloat(rawStr, 64); err != nil {
 					return true
 				}
 			}
